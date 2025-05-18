@@ -1,0 +1,15 @@
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/bin/Debug/net8.0/1_3_InteropApp
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/bin/Debug/net8.0/1_3_InteropApp.deps.json
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/bin/Debug/net8.0/1_3_InteropApp.runtimeconfig.json
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/bin/Debug/net8.0/1_3_InteropApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/bin/Debug/net8.0/1_3_InteropApp.pdb
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.AssemblyInfoInputs.cache
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.AssemblyInfo.cs
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.csproj.CoreCompileInputs.cache
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.sourcelink.json
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/refint/1_3_InteropApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.pdb
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/1_3_InteropApp.genruntimeconfig.cache
+/Users/nhatduy261179/prn212/01_intro/1_3_InteropApp/obj/Debug/net8.0/ref/1_3_InteropApp.dll

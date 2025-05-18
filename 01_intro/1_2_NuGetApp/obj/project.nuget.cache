@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "mOe12DwErv8=",
+  "success": true,
+  "projectFilePath": "/Users/nhatduy261179/prn212/01_intro/1_2_NuGetApp/1_2_NuGetApp.csproj",
+  "expectedPackageFiles": [
+    "/Users/nhatduy261179/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}

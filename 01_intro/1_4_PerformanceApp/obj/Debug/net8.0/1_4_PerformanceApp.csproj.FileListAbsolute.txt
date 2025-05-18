@@ -1,0 +1,15 @@
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/bin/Debug/net8.0/1_4_PerformanceApp
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/bin/Debug/net8.0/1_4_PerformanceApp.deps.json
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/bin/Debug/net8.0/1_4_PerformanceApp.runtimeconfig.json
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/bin/Debug/net8.0/1_4_PerformanceApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/bin/Debug/net8.0/1_4_PerformanceApp.pdb
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.AssemblyInfoInputs.cache
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.AssemblyInfo.cs
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.csproj.CoreCompileInputs.cache
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.sourcelink.json
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/refint/1_4_PerformanceApp.dll
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.pdb
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/1_4_PerformanceApp.genruntimeconfig.cache
+/Users/nhatduy261179/prn212/01_intro/1_4_PerformanceApp/obj/Debug/net8.0/ref/1_4_PerformanceApp.dll
