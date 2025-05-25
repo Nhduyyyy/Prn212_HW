@@ -6,56 +6,244 @@ using System.Linq;
 
 namespace LibraryManagementSystem
 {
-    // ======== BASIC ASSIGNMENT ========
-    
-    // TODO: Create the abstract base class LibraryItem with:
-    // - Properties: Id, Title, PublicationYear
-    // - Constructor that initializes these properties
-    // - Abstract method: DisplayInfo()
-    // - Virtual method: CalculateLateReturnFee(int daysLate) that returns decimal
-    //   with a basic implementation of daysLate * 0.50m
-    
-    // TODO: Create the IBorrowable interface with:
-    // - Properties: BorrowDate (DateTime?), ReturnDate (DateTime?), IsAvailable (bool)
-    // - Methods: Borrow(), Return()
-    
-    // TODO: Create the Book class that inherits from LibraryItem and implements IBorrowable
-    // - Add properties: Author, Pages, Genre
-    // - Implement all required methods from the base class and interface
-    // - Override CalculateLateReturnFee to return daysLate * 0.75m
-    
-    // TODO: Create the DVD class that inherits from LibraryItem and implements IBorrowable
-    // - Add properties: Director, Runtime (in minutes), AgeRating
-    // - Implement all required methods from the base class and interface
-    // - Override CalculateLateReturnFee to return daysLate * 1.00m
-    
-    // TODO: Create the Magazine class that inherits from LibraryItem
-    // - Add properties: IssueNumber, Publisher
-    // - Implement all required methods from the base class
-    // - Magazines don't need to implement IBorrowable (they typically can't be borrowed)
-    
-    // TODO: Create the Library class with:
-    // - A list to store LibraryItems
-    // - Methods: AddItem(), SearchByTitle(), DisplayAllItems()
-    
-    // ======== ADVANCED ASSIGNMENT ========
-    
-    // TODO (ADVANCED): Create a record type for tracking borrowing history
-    // - Include: ItemId, Title, BorrowDate, ReturnDate, BorrowerName
-    // - Add an init-only property: LibraryLocation
-    
-    // TODO (ADVANCED): Create an extension method for string
-    // - Create a method ContainsIgnoreCase() that checks if a string contains
-    //   another string, ignoring case sensitivity
-    
-    // TODO (ADVANCED): Create a generic collection to avoid boxing/unboxing
-    // - Create a class LibraryItemCollection<T> where T : LibraryItem
-    // - Implement methods: Add(), GetItem(), Count property
-    
-    // TODO (ADVANCED): Add ref parameter and ref return methods to the Library class
-    // - UpdateItemTitle method using ref parameter
-    // - GetItemReference method with ref return
+    // Abstract base class for all library items
+    public abstract class LibraryItem
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+        public int PublicationYear { get; set; }
 
+        protected LibraryItem(int id, string title, int year)
+        {
+            Id = id;
+            Title = title;
+            PublicationYear = year;
+        }
+
+        // Must be implemented by derived types to display detailed info
+        public abstract void DisplayInfo();
+
+        // Basic late fee: $0.50 per day
+        public virtual decimal CalculateLateReturnFee(int daysLate)
+        {
+            return daysLate * 0.50m;
+        }
+    }
+
+    // Interface defining borrowable behavior
+    public interface IBorrowable
+    {
+        DateTime? BorrowDate { get; }
+        DateTime? ReturnDate { get; }
+        bool IsAvailable { get; }
+
+        void Borrow();
+        void Return();
+    }
+
+    // Book class: borrowable, overrides late fee
+    public class Book : LibraryItem, IBorrowable
+    {
+        public string Author { get; set; }
+        public int Pages { get; set; }
+        public string Genre { get; set; } = string.Empty; // default to avoid null warnings
+
+        public DateTime? BorrowDate { get; private set; }
+        public DateTime? ReturnDate { get; private set; }
+        public bool IsAvailable { get; private set; } = true;
+
+        public Book(int id, string title, int year, string author)
+            : base(id, title, year)
+        {
+            Author = author;
+        }
+
+        public override void DisplayInfo()
+        {
+            Console.WriteLine($"[Book]    Id: {Id}, Title: '{Title}', Author: {Author}, Year: {PublicationYear}, Pages: {Pages}, Genre: {Genre}, Available: {IsAvailable}");
+        }
+
+        public override decimal CalculateLateReturnFee(int daysLate)
+        {
+            return daysLate * 0.75m;
+        }
+
+        public void Borrow()
+        {
+            if (!IsAvailable)
+            {
+                Console.WriteLine($"Cannot borrow '{Title}' (Id {Id}): currently unavailable.");
+                return;
+            }
+            BorrowDate = DateTime.Now;
+            ReturnDate = null;
+            IsAvailable = false;
+            Console.WriteLine($"Borrowed '{Title}' on {BorrowDate:yyyy-MM-dd}.");
+        }
+
+        public void Return()
+        {
+            if (IsAvailable)
+            {
+                Console.WriteLine($"'{Title}' was not borrowed.");
+                return;
+            }
+            ReturnDate = DateTime.Now;
+            int daysLate = (int)((ReturnDate - BorrowDate)?.Days ?? 0);
+            decimal fee = CalculateLateReturnFee(daysLate);
+            Console.WriteLine($"Returned '{Title}' on {ReturnDate:yyyy-MM-dd}. Days late: {daysLate}, Fee: ${fee:F2}");
+            IsAvailable = true;
+        }
+    }
+
+    // DVD class: borrowable, overrides late fee
+    public class DVD : LibraryItem, IBorrowable
+    {
+        public string Director { get; set; }
+        public int Runtime { get; set; }    // in minutes
+        public string AgeRating { get; set; } = string.Empty; // default to avoid null warnings
+
+        public DateTime? BorrowDate { get; private set; }
+        public DateTime? ReturnDate { get; private set; }
+        public bool IsAvailable { get; private set; } = true;
+
+        public DVD(int id, string title, int year, string director)
+            : base(id, title, year)
+        {
+            Director = director;
+        }
+
+        public override void DisplayInfo()
+        {
+            Console.WriteLine($"[DVD]     Id: {Id}, Title: '{Title}', Director: {Director}, Year: {PublicationYear}, Runtime: {Runtime}min, Rating: {AgeRating}, Available: {IsAvailable}");
+        }
+
+        public override decimal CalculateLateReturnFee(int daysLate)
+        {
+            return daysLate * 1.00m;
+        }
+
+        public void Borrow()
+        {
+            if (!IsAvailable)
+            {
+                Console.WriteLine($"Cannot borrow '{Title}' (Id {Id}): currently unavailable.");
+                return;
+            }
+            BorrowDate = DateTime.Now;
+            ReturnDate = null;
+            IsAvailable = false;
+            Console.WriteLine($"Borrowed '{Title}' on {BorrowDate:yyyy-MM-dd}.");
+        }
+
+        public void Return()
+        {
+            if (IsAvailable)
+            {
+                Console.WriteLine($"'{Title}' was not borrowed.");
+                return;
+            }
+            ReturnDate = DateTime.Now;
+            int daysLate = (int)((ReturnDate - BorrowDate)?.Days ?? 0);
+            decimal fee = CalculateLateReturnFee(daysLate);
+            Console.WriteLine($"Returned '{Title}' on {ReturnDate:yyyy-MM-dd}. Days late: {daysLate}, Fee: ${fee:F2}");
+            IsAvailable = true;
+        }
+    }
+
+    // Magazine class: not borrowable
+    public class Magazine : LibraryItem
+    {
+        public int IssueNumber { get; set; }
+        public string Publisher { get; set; } = string.Empty; // default to avoid null warnings
+
+        public Magazine(int id, string title, int year, int issue)
+            : base(id, title, year)
+        {
+            IssueNumber = issue;
+        }
+
+        public override void DisplayInfo()
+        {
+            Console.WriteLine($"[Magazine]Id: {Id}, Title: '{Title}', Year: {PublicationYear}, Issue: {IssueNumber}, Publisher: {Publisher}");
+        }
+    }
+
+    // Manages collection of all library items with ref-return capability
+    public class Library
+    {
+        private LibraryItem[] items = Array.Empty<LibraryItem>();
+
+        public void AddItem(LibraryItem item)
+        {
+            Array.Resize(ref items, items.Length + 1);
+            items[^1] = item;
+            Console.WriteLine($"Added item: {item.Title} (Id {item.Id}).");
+        }
+
+        public void DisplayAllItems()
+        {
+            Console.WriteLine("\n=== All Library Items ===");
+            foreach (var item in items)
+            {
+                item.DisplayInfo();
+            }
+        }
+
+        public LibraryItem? SearchByTitle(string keyword)
+        {
+            return items.FirstOrDefault(i => i.Title.ContainsIgnoreCase(keyword));
+        }
+
+        // Update title via ref parameter
+        public bool UpdateItemTitle(int id, ref string newTitle)
+        {
+            int index = Array.FindIndex(items, i => i.Id == id);
+            if (index < 0) return false;
+            items[index].Title = newTitle;
+            return true;
+        }
+
+        // Return ref to the LibraryItem for direct modification
+        public ref LibraryItem GetItemReference(int id)
+        {
+            for (int i = 0; i < items.Length; i++)
+            {
+                if (items[i].Id == id)
+                    return ref items[i];
+            }
+            throw new KeyNotFoundException($"No item with Id {id} found.");
+        }
+    }
+
+    // Record type for borrow history
+    public record BorrowRecord(
+        int ItemId,
+        string Title,
+        DateTime BorrowDate,
+        DateTime? ReturnDate,
+        string BorrowerName)
+    {
+        public string LibraryLocation { get; init; } = string.Empty; // default to avoid null warnings
+    }
+
+    // Extension methods for string
+    public static class StringExtensions
+    {
+        public static bool ContainsIgnoreCase(this string source, string toCheck)
+        {
+            return source?.IndexOf(toCheck, StringComparison.OrdinalIgnoreCase) >= 0;
+        }
+    }
+
+    // Generic collection for LibraryItem types
+    public class LibraryItemCollection<T> where T : LibraryItem
+    {
+        private readonly List<T> items = new();
+        public int Count => items.Count;
+        public void Add(T item) => items.Add(item);
+        public T GetItem(int index) => items[index];
+    }
     class Program
     {
         static void Main()
@@ -128,7 +316,7 @@ namespace LibraryManagementSystem
             // ======== ADVANCED FEATURES DEMONSTRATION ========
             // Uncomment and implement these sections for the advanced assignment
             
-            /*
+            
             if (ShouldRunAdvancedFeatures())
             {
                 // Boxing/Unboxing performance comparison
@@ -257,7 +445,7 @@ namespace LibraryManagementSystem
                 bool contains = "Clean Code".ContainsIgnoreCase(searchTerm);
                 Console.WriteLine($"Does 'Clean Code' contain '{searchTerm}'? {contains}");
             }
-            */
+            
         }
 
         static bool ShouldRunAdvancedFeatures()

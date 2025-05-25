@@ -1,0 +1,15 @@
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.GeneratedMSBuildEditorConfig.editorconfig
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.AssemblyInfoInputs.cache
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.AssemblyInfo.cs
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.csproj.CoreCompileInputs.cache
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.sourcelink.json
+/Users/nhatduy261179/prn212/03_oop/HW/bin/Debug/net8.0/HW
+/Users/nhatduy261179/prn212/03_oop/HW/bin/Debug/net8.0/HW.deps.json
+/Users/nhatduy261179/prn212/03_oop/HW/bin/Debug/net8.0/HW.runtimeconfig.json
+/Users/nhatduy261179/prn212/03_oop/HW/bin/Debug/net8.0/HW.dll
+/Users/nhatduy261179/prn212/03_oop/HW/bin/Debug/net8.0/HW.pdb
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.dll
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/refint/HW.dll
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.pdb
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/HW.genruntimeconfig.cache
+/Users/nhatduy261179/prn212/03_oop/HW/obj/Debug/net8.0/ref/HW.dll
